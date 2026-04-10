@@ -76,35 +76,42 @@
 % Needed to manage math fonts
 \RequirePackage{unicode-math}
 % Needed to use icons from font-awesome
-\RequirePackage{fontawesome6}
+\IfFileExists{fontawesome6.sty}{%
+  \RequirePackage{fontawesome6}%
+}{%
+  % Fall back to empty icon commands when fontawesome6 is unavailable.
+  % This keeps the document compilable on slimmer TeX installs.
+  \providecommand{\faMobile}{}%
+  \providecommand{\faSquareWhatsapp}{}%
+  \providecommand{\faEnvelope}{}%
+  \providecommand{\faCakeCandles}{}%
+  \providecommand{\faHouseChimney}{}%
+  \providecommand{\faSquareGithub}{}%
+  \providecommand{\faGitlab}{}%
+  \providecommand{\faBitbucket}{}%
+  \providecommand{\faStackOverflow}{}%
+  \providecommand{\faLinkedin}{}%
+  \providecommand{\faOrcid}{}%
+  \providecommand{\faTwitter}{}%
+  \providecommand{\faXTwitter}{}%
+  \providecommand{\faMastodon}{}%
+  \providecommand{\faSkype}{}%
+  \providecommand{\faReddit}{}%
+  \providecommand{\faResearchgate}{}%
+  \providecommand{\faSquareXing}{}%
+  \providecommand{\faMedium}{}%
+  \providecommand{\faKaggle}{}%
+  \providecommand{\faHackerrank}{}%
+  \providecommand{\faTelegram}{}%
+  \providecommand{\faGraduationCap}{}%
+}%
 \RequirePackage{accsupp}
 \defaultfontfeatures{
   Renderer=HarfBuzz,
 }
-\setmainfont{Source Sans 3}[
-  UprightFont=*,
-  ItalicFont=* Italic,
-  BoldFont=* Bold,
-  BoldItalicFont=* Bold Italic,
-  FontFace={l}{n}{Font=* Light},
-  FontFace={l}{it}{Font=* Light Italic},
-]
-\setsansfont{Source Sans 3}[
-  UprightFont=*,
-  ItalicFont=* Italic,
-  BoldFont=* Bold,
-  BoldItalicFont=* Bold Italic,
-  FontFace={l}{n}{Font=* Light},
-  FontFace={l}{it}{Font=* Light Italic},
-]
-\newfontfamily\roboto{Roboto}[
-  UprightFont=*,
-  ItalicFont=* Italic,
-  BoldFont=* Bold,
-  BoldItalicFont=* Bold Italic,
-  FontFace={l}{n}{Font=* Light},
-  FontFace={l}{it}{Font=* Light Italic},
-]
+\setmainfont{TeX Gyre Heros}
+\setsansfont{TeX Gyre Heros}
+\newfontfamily\roboto{TeX Gyre Heros}
 % Needed for the photo ID
 \RequirePackage[skins]{tcolorbox}
 % Needed to deal a paragraphs
@@ -185,10 +192,10 @@
 %                Configuration for fonts
 %-------------------------------------------------------------------------------
 \newcommand*{\headerfont}{\roboto\selectfont}
-\newcommand*{\headerfontlight}{\roboto\fontseries{l}\selectfont}
+\newcommand*{\headerfontlight}{\roboto\selectfont}
 \newcommand*{\footerfont}{\sffamily}
 \newcommand*{\bodyfont}{\sffamily}
-\newcommand*{\bodyfontlight}{\sffamily\fontseries{l}\selectfont}
+\newcommand*{\bodyfontlight}{\sffamily\selectfont}
 
 %-------------------------------------------------------------------------------
 %                Configuration for styles
