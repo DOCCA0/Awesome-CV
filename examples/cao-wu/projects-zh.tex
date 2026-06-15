@@ -1,0 +1,38 @@
+%-------------------------------------------------------------------------------
+% SECTION TITLE
+%-------------------------------------------------------------------------------
+\cvsection{项目经历}
+
+
+%-------------------------------------------------------------------------------
+% CONTENT
+%-------------------------------------------------------------------------------
+\begin{cventries}
+
+%---------------------------------------------------------
+  \cventry
+    {个人项目}
+    {A Simplified vLLM Core}
+    {LLM 推理系统}
+    {2025年12月 -- 至今}
+    {
+      \begin{cvitems}
+        \item {基于 PyTorch/CUDA 从零实现简化版 vLLM 推理核心，覆盖 KV Cache、PagedAttention、Continuous Batching、AWQ 等关键模块，完成从请求接入到推理执行的基础链路搭建。}
+      \end{cvitems}
+    }
+
+%---------------------------------------------------------
+  \cventry
+    {\textcolor{awesome-red}{毕业设计} \textbf{\textcolor{awesome-red}{（进行中）}}}
+    {Possible Optimizations for MoE Inference in vLLM}
+    {米兰理工大学}
+    {2026年 -- 至今}
+    {
+      \begin{cvitems}
+        \item {研究 Scheduling For Experts Movement：在 EPLB 中发生 Expert 迁移时，在不改变算法结果的前提下，对同一批 Batch 重新组合以缓解 Hotspot；目前已完成 ILP 建模并证明可得到更优组合，后续将在真实 GPU 集群上测试。}
+        \item {研究在 EPLB 迁移阶段降低 Expert 迁移优先级，以提升推理吞吐、尾延迟稳定性与在线服务连续性；这一 Feature 的主要难点不在代码实现，而在实验设计与 A/B 对齐。}
+      \end{cvitems}
+    }
+
+%---------------------------------------------------------
+\end{cventries}

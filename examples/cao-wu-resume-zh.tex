@@ -1,0 +1,69 @@
+%!TEX TS-program = lualatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[11pt, a4paper]{awesome-cv}
+
+\usepackage{luatexja-fontspec}
+
+\setmainjfont{Noto Sans CJK SC}
+\setsansjfont{Noto Sans CJK SC}
+\renewcommand{\headerfont}{\sffamily}
+\renewcommand{\headerfontlight}{\sffamily}
+\renewcommand{\footerfont}{\sffamily}
+\renewcommand{\bodyfont}{\sffamily}
+\renewcommand{\bodyfontlight}{\sffamily}
+\renewcommand{\headerfirstnamestyle}[1]{{\fontsize{32pt}{1em}\headerfont\bfseries\color{text} #1}}
+\renewcommand{\headerlastnamestyle}[1]{{\fontsize{32pt}{1em}\headerfont\bfseries\color{text} #1}}
+
+\renewcommand{\entrytitlestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
+\renewcommand{\entrypositionstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\bfseries\color{graytext} #1}}
+\renewcommand{\entrydatestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\color{graytext} #1}}
+\renewcommand{\entrylocationstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\bfseries\color{awesome} #1}}
+\renewcommand{\descriptionstyle}[1]{{\fontsize{9pt}{1.25em}\bodyfont\color{text} #1}}
+\renewcommand{\honortitlestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\color{graytext} #1}}
+\renewcommand{\honorpositionstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
+\renewcommand{\honordatestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\color{graytext} #1}}
+\renewcommand{\honorlocationstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\color{awesome} #1}}
+\renewcommand{\skilltypestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
+\renewcommand{\skillsetstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\color{text} #1}}
+\renewcommand{\paragraphstyle}{\fontsize{9pt}{1.3em}\bodyfont\upshape\color{text}}
+\newcommand{\schooltag}[1]{%
+  {\hspace{0.35em}\raisebox{0.05em}{%
+    \colorbox{awesome!10}{\textcolor{awesome!75!black}{\fontsize{7.2pt}{1em}\bodyfont\bfseries\strut #1}}%
+  }}%
+}
+\renewenvironment{cvitems}{%
+  \vspace{-4.0mm}
+  \begin{justify}
+  \begin{itemize}[leftmargin=2ex, nosep, noitemsep]
+    \setlength{\parskip}{0pt}
+    \renewcommand{\labelitemi}{\textendash}
+}{%
+  \end{itemize}
+  \end{justify}
+  \vspace{1.0mm}
+}
+
+\geometry{left=1.35cm, top=.9cm, right=1.35cm, bottom=1.35cm, footskip=.4cm}
+
+\colorlet{awesome}{awesome-red}
+\setbool{acvSectionColorHighlight}{false}
+\renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
+
+\name{吴}{操}
+
+\mobile{+86 15882372901}
+\email{wucao20000102@gmail.com}
+
+\begin{document}
+
+\makecvheader[C]
+
+\input{cao-wu/education-zh.tex}
+\input{cao-wu/experience-zh.tex}
+\input{cao-wu/projects-zh.tex}
+\input{cao-wu/honors-zh.tex}
+\input{cao-wu/skills-zh.tex}
+\input{cao-wu/profile-zh.tex}
+
+\end{document}

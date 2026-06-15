@@ -9,12 +9,15 @@ RESUME_SRCS = $(shell find $(RESUME_DIR) -name '*.tex')
 CV_SRCS = $(shell find $(CV_DIR) -name '*.tex')
 CAO_WU_SRCS = $(shell find $(CAO_WU_DIR) -name '*.tex')
 
-examples: $(foreach x, coverletter cv resume cao-wu-resume-eng, $x.pdf)
+examples: $(foreach x, coverletter cv resume cao-wu-resume-eng cao-wu-resume-zh, $x.pdf)
 
 resume.pdf: $(EXAMPLES_DIR)/resume.tex $(RESUME_SRCS)
 	$(CC) -output-directory=$(EXAMPLES_DIR) $<
 
 cao-wu-resume-eng.pdf: $(EXAMPLES_DIR)/cao-wu-resume-eng.tex $(CAO_WU_SRCS)
+	$(CC) -output-directory=$(EXAMPLES_DIR) $<
+
+cao-wu-resume-zh.pdf: $(EXAMPLES_DIR)/cao-wu-resume-zh.tex $(CAO_WU_SRCS)
 	$(CC) -output-directory=$(EXAMPLES_DIR) $<
 
 cv.pdf: $(EXAMPLES_DIR)/cv.tex $(CV_SRCS)
