@@ -17,7 +17,9 @@
     {2025年12月 -- 至今}
     {
       \begin{cvitems}
-        \item {基于 PyTorch/CUDA 从零实现简化版 vLLM 推理核心，覆盖 KV Cache、PagedAttention、Continuous Batching、AWQ 等关键模块，完成从请求接入到推理执行的基础链路搭建。}
+        \item {基于 PyTorch/CUDA 从零实现简化版 vLLM 推理核心，完成 Engine、Scheduler、BlockManager 等模块搭建，打通 LLM 请求调度与执行链路。}
+        \item {实现 Paged KV Cache、Continuous Batching 与 prefill/decode 混合调度，支持多请求离线并发推理。}
+        \item {实现 AWQ 量化，降低模型权重存储开销。}
       \end{cvitems}
     }
 

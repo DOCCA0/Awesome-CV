@@ -30,9 +30,9 @@
     {Dec. 2025 - Present}
     {
       \begin{cvitems}
-        \item {Rebuilt core vLLM-style inference components from scratch in PyTorch/CUDA, including paged KV-cache block management, continuous batching, and a lightweight LLM serving engine.}
-        \item {Implemented a FlashAttention-style prefill CUDA kernel and benchmarked it against dense baselines, achieving about 10\% lower prefill latency than a naive CUDA attention kernel (4.64 ms vs. 5.15 ms).}
-        \item {Designed KV-cache writeback and INT8 KV-cache quantization, reducing KV memory usage by about 50\% (0.0078 GB to 0.0039 GB) with low quantization overhead (0.052 ms quantize, 0.145 ms dequantize).}
+        \item {Built a simplified vLLM-style inference core in PyTorch/CUDA, implementing the Engine, Scheduler, and BlockManager to connect request scheduling and execution end to end.}
+        \item {Implemented paged KV cache, continuous batching, and mixed prefill/decode scheduling for concurrent offline inference across multiple requests.}
+        \item {Added AWQ quantization to reduce model weight storage overhead.}
       \end{cvitems}
     }
 
