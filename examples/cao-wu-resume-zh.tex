@@ -32,6 +32,11 @@
     \colorbox{awesome!10}{\textcolor{awesome!75!black}{\fontsize{7.2pt}{1em}\bodyfont\bfseries\strut #1}}%
   }}%
 }
+\newcommand{\headertag}[1]{%
+  {\raisebox{0.05em}{%
+    \colorbox{awesome!10}{\textcolor{awesome!75!black}{\fontsize{7.2pt}{1em}\bodyfont\bfseries\strut #1}}%
+  }}%
+}
 \renewenvironment{cvitems}{%
   \vspace{-4.0mm}
   \begin{justify}
@@ -54,6 +59,7 @@
 
 \mobile{+86 15882372901}
 \email{wucao20000102@gmail.com}
+\extrainfo{\headertag{求职意向：AI infra、LLM 推理}}
 
 \begin{document}
 
