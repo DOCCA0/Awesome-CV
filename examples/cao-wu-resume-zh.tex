@@ -49,7 +49,18 @@
   \vspace{1.0mm}
 }
 
-\geometry{left=1.35cm, top=.9cm, right=1.35cm, bottom=1.35cm, footskip=.4cm}
+\geometry{left=1.35cm, top=.7cm, right=1.35cm, bottom=.8cm, footskip=.4cm}
+
+\renewcommand{\acvSectionTopSkip}{1.2mm}
+\renewcommand{\acvSectionContentTopSkip}{1.0mm}
+\renewenvironment{cvparagraph}{%
+  \vspace{\acvSectionContentTopSkip}
+  \vspace{-3mm}
+  \paragraphstyle
+}{%
+  \par
+  \vspace{0.5mm}
+}
 
 \colorlet{awesome}{awesome-red}
 \setbool{acvSectionColorHighlight}{false}

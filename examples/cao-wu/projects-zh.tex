@@ -1,7 +1,7 @@
 %-------------------------------------------------------------------------------
 % SECTION TITLE
 %-------------------------------------------------------------------------------
-\cvsection{项目经历}
+\cvsection{项目经历（推理相关）}
 
 
 %-------------------------------------------------------------------------------
@@ -19,20 +19,21 @@
       \begin{cvitems}
         \item {基于 PyTorch/CUDA 从零实现简化版 vLLM 推理核心，完成 Engine、Scheduler、BlockManager 等模块搭建，打通 LLM 请求调度与执行链路。}
         \item {实现 Paged KV Cache、Continuous Batching 与 prefill/decode 混合调度，支持多请求离线并发推理。}
-        \item {实现 AWQ 量化，降低模型权重存储开销。}
+        \item {实现 AWQ 量化并深入理解其基本原理，显著降低模型权重存储开销。}
       \end{cvitems}
     }
 
 %---------------------------------------------------------
   \cventry
     {\textcolor{awesome-red}{毕业设计} \textbf{\textcolor{awesome-red}{（进行中）}}}
-    {Possible Optimizations for MoE Inference in vLLM}
+    {Scheduling for Expert Movement in vLLM's EPLB}
     {米兰理工大学}
     {2026年5月 -- 至今}
     {
       \begin{cvitems}
-        \item {研究 Scheduling For Experts Movement：在 EPLB 中发生 Expert 迁移时，在不改变算法结果的前提下，对同一批 Batch 重新组合以缓解 Hotspot；目前已完成 ILP 建模并证明可得到更优组合，后续将在真实 GPU 集群上测试。}
-        \item {研究在 EPLB 迁移阶段降低 Expert 迁移优先级，以提升推理吞吐、尾延迟稳定性与在线服务连续性；这一 Feature 的主要难点不在代码实现，而在实验设计与 A/B 对齐。}
+        \item {在 vLLM 的 MoE 专家并行负载均衡（EPLB）重平衡阶段，针对专家迁移（Expert Weight Migration）中单个 rank 同时承担多对 P2P 传输的并发热点问题，设计迁移批调度机制，在保持最终 expert placement 一致的前提下，将迁移请求重新组织为无冲突批次，降低 rank 级别热点及其引发的 NIC 拥堵。}
+        \item {问题建模与策略：基于 EPLB 重平衡前后的全局 expert index 映射，将远程迁移抽象为端点冲突受限的 batching 问题；设计并实现两种贪心策略，其中 degree\_desc 按端点度数降序优先处理，在典型热点场景下可逼近 ILP 给出的最优 batch 数。}
+        \item {vLLM 集成：将迁移调度能力嵌入 vLLM 的 EPLB 重平衡执行路径，新增可配置开关（如 batching 开关、策略选择、最大 batch 数软限制），保证与原有全并发模式兼容；后续计划在真实 GPU 集群上测试该方案对 rank 热点和在线推理延迟稳定性的影响。}
       \end{cvitems}
     }
 
