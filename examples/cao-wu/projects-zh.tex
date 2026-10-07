@@ -11,29 +11,16 @@
 
 %---------------------------------------------------------
   \cventry
-    {个人项目}
-    {A Simplified vLLM Core}
-    {LLM 推理系统}
-    {2025年12月 -- 2026年5月}
-    {
-      \begin{cvitems}
-        \item {基于 PyTorch/CUDA 从零实现简化版 vLLM 推理核心，完成 Engine、Scheduler、BlockManager 等模块搭建，打通 LLM 请求调度与执行链路。}
-        \item {实现 Paged KV Cache、Continuous Batching 与 prefill/decode 混合调度，支持多请求离线并发推理。}
-        \item {实现 AWQ 量化并深入理解其基本原理，显著降低模型权重存储开销。}
-      \end{cvitems}
-    }
-
-%---------------------------------------------------------
-  \cventry
-    {\textcolor{awesome-red}{毕业设计} \textbf{\textcolor{awesome-red}{（进行中）}}}
+    {\textcolor{awesome-red}{毕业设计 / vLLM 开源贡献}}
     {Scheduling for Expert Movement in vLLM's EPLB}
     {米兰理工大学}
-    {2026年5月 -- 至今}
+    {2026年5月 -- 2026年10月}
     {
       \begin{cvitems}
-        \item {在 vLLM 的 MoE 专家并行负载均衡（EPLB）重平衡阶段，针对专家迁移（Expert Weight Migration）中单个 rank 同时承担多对 P2P 传输的并发热点问题，设计迁移批调度机制，在保持最终 expert placement 一致的前提下，将迁移请求重新组织为无冲突批次，降低 rank 级别热点及其引发的 NIC 拥堵。}
-        \item {问题建模与策略：基于 EPLB 重平衡前后的全局 expert index 映射，将远程迁移抽象为端点冲突受限的 batching 问题；设计并实现两种贪心策略，其中 degree\_desc 按端点度数降序优先处理，在典型热点场景下可逼近 ILP 给出的最优 batch 数。}
-        \item {vLLM 集成：将迁移调度能力嵌入 vLLM 的 EPLB 重平衡执行路径，新增可配置开关（如 batching 开关、策略选择、最大 batch 数软限制），保证与原有全并发模式兼容；后续计划在真实 GPU 集群上测试该方案对 rank 热点和在线推理延迟稳定性的影响。}
+        \item {\textbf{项目概述：}针对异步 EPLB 专家迁移与在线推理争抢网络带宽、拉高服务延迟的问题，设计并实现 contention-aware 专家迁移批调度机制。\href{https://github.com/vllm-project/vllm/pull/52641}{vLLM PR \#52641} 已于 2026 年 10 月合入主分支，\textbf{\textcolor{awesome-red}{该优化已被 vLLM 合入，成为 vLLM 官方特性。}}}
+        \item {\textbf{调度设计：}按源/目标 rank 组织迁移并拆分为无冲突批次，使每个 rank 在单批次内至多与一个对端通信，同时保留互不冲突 rank 对之间的并发传输，降低 rank 级通信热点与 NIC 瞬时拥塞。}
+        \item {\textbf{工程集成：}将调度器集成至 vLLM 异步 EPLB/NIXL 迁移链路；在每次重平衡周期中一次性生成全部 48 个 MoE Layer 的调度计划，迁移仍按 Layer 执行，在控制网络竞争的同时降低 Python 调度开销，并保持同步 EPLB 原有路径不变。}
+        \item {\textbf{性能收益：}在 4 节点、TP=4、32 并发的 Qwen3-30B-A3B 在线服务测试中，请求吞吐提升 \textbf{2.28\%}；TTFT P50/P99 降低 \textbf{1.18\%/1.30\%}，TPOT P50/P99 降低 \textbf{1.94\%/0.87\%}，E2EL P50/P99 降低 \textbf{3.18\%/1.50\%}；NIC 流量 P99 降低 \textbf{10.24\%}，调度总开销仅为节省服务时间的 \textbf{0.285\%}。}
       \end{cvitems}
     }
 
